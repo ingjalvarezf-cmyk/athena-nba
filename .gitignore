@@ -1,0 +1,12 @@
+# Dependencias de Node
+node_modules/
+dist/
+.env
+
+# Entorno de Python
+data_engine/venv/
+__pycache__/
+
+# Logs y SO
+.DS_Store
+*.log

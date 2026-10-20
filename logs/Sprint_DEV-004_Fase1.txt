@@ -1,0 +1,137 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20261016171832
+Nombre de usuario: TIERRAYARMONIA\jorge.alvarez
+Usuario RunAs: TIERRAYARMONIA\jorge.alvarez
+Nombre de la configuración: 
+Máquina: TYA-PF1P0818 (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Id. de proceso: 10248
+PSVersion: 5.1.19041.6456
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6456
+BuildVersion: 10.0.19041.6456
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\jorge.alvarez\Documents\ATHENA_NBA_1.0\logs\Sprint_DEV-004_Fase1.txt
+=======================================================
+ REANUDANDO SPRINT: DEV-004 Fase 1 (Backend Node.js/Express)
+=======================================================
+Set-Location : No se encuentra la ruta de acceso 'C:\Users\jorge.alvarez\Documents\ATHENA_NBA_1.0\backend' porque no 
+existe.
+En línea: 14 Carácter: 1
++ Set-Location $backendPath
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\jorge....NBA_1.0\backend:String) [Set-Location], 
+ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SetLocationCommand
+Set-Location : No se encuentra la ruta de acceso 'C:\Users\jorge.alvarez\Documents\ATHENA_NBA_1.0\backend' porque no
+existe.
+En línea: 14 Carácter: 1
++ Set-Location $backendPath
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\jorge....NBA_1.0\backend:String) [Set-Location], ItemNotFoundE
+   xception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SetLocationCommand
+
+
+1. Verificando dependencias...
+   [OK] node_modules ya está instalado.
+
+2. Verificando configuración de TypeScript...
+   [OK] tsconfig.json ya existe.
+
+3. Verificando arquitectura de directorios...
+   [OK] Carpeta creada: src\controllers
+   [OK] Carpeta creada: src\routes
+   [OK] Carpeta creada: src\services
+   [OK] Carpeta creada: src\config
+
+4. Generando servidor base (src\server.ts)...
+   [OK] src\server.ts actualizado.
+
+5. Configurando scripts en package.json (Método seguro)...
+PS>ErrorTerminación(Get-Content): "No se encuentra ningún parámetro que coincida con el nombre del parámetro 'Path$pkgJsonPath'."
+Get-Content : No se encuentra ningún parámetro que coincida con el nombre del parámetro 'Path$pkgJsonPath'.
+En línea: 47 Carácter: 24
++ $pkgJson = Get-Content -Path$pkgJsonPath -Raw | ConvertFrom-Json
++                        ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Get-Content], ParameterBindingException
+    + FullyQualifiedErrorId : NamedParameterNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+Get-Content : No se encuentra ningún parámetro que coincida con el nombre del parámetro 'Path$pkgJsonPath'.
+En línea: 47 Carácter: 24
++ $pkgJson = Get-Content -Path$pkgJsonPath -Raw | ConvertFrom-Json
++                        ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Get-Content], ParameterBindingException
+    + FullyQualifiedErrorId : NamedParameterNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+
+Add-Member : No se puede enlazar el argumento al parámetro 'InputObject' porque es nulo.
+En línea: 50 Carácter: 45
++ ... {$pkgJson | Add-Member -MemberType NoteProperty -Name "scripts" -Valu ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Add-Member], ParameterBindingValidationException
+    + FullyQualifiedErrorId : 
+ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.AddMemberCommand
+Add-Member : No se puede enlazar el argumento al parámetro 'InputObject' porque es nulo.
+En línea: 50 Carácter: 45
++ ... {$pkgJson | Add-Member -MemberType NoteProperty -Name "scripts" -Valu ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Add-Member], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.AddMemberCo
+   mmand
+
+Add-Member : No se puede enlazar el argumento al parámetro 'InputObject' porque es nulo.
+En línea: 54 Carácter: 20
++ ... n.scripts | Add-Member -MemberType NoteProperty -Name "dev" -Value "t ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Add-Member], ParameterBindingValidationException
+    + FullyQualifiedErrorId : 
+ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.AddMemberCommand
+Add-Member : No se puede enlazar el argumento al parámetro 'InputObject' porque es nulo.
+En línea: 54 Carácter: 20
++ ... n.scripts | Add-Member -MemberType NoteProperty -Name "dev" -Value "t ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Add-Member], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.AddMemberCo
+   mmand
+
+PS>ErrorTerminación(ConvertTo-Json): "No se encuentra ningún parámetro que coincida con el nombre del parámetro 'InputObject$pkgJson'."
+ConvertTo-Json : No se encuentra ningún parámetro que coincida con el nombre del parámetro 'InputObject$pkgJson'.
+En línea: 57 Carácter: 30
++ $jsonString = ConvertTo-Json -InputObject$pkgJson -Depth 10
++                              ~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [ConvertTo-Json], ParameterBindingException
+    + FullyQualifiedErrorId : NamedParameterNotFound,Microsoft.PowerShell.Commands.ConvertToJsonCommand
+ConvertTo-Json : No se encuentra ningún parámetro que coincida con el nombre del parámetro 'InputObject$pkgJson'.
+En línea: 57 Carácter: 30
++ $jsonString = ConvertTo-Json -InputObject$pkgJson -Depth 10
++                              ~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [ConvertTo-Json], ParameterBindingException
+    + FullyQualifiedErrorId : NamedParameterNotFound,Microsoft.PowerShell.Commands.ConvertToJsonCommand
+
+>> ErrorTerminación(Set-Content): "No se encuentra ningún parámetro que coincida con el nombre del parámetro 'Value$jsonString'."
+Set-Content : No se encuentra ningún parámetro que coincida con el nombre del parámetro 'Value$jsonString'.
+En línea: 58 Carácter: 32
++ Set-Content -Path $pkgJsonPath -Value$jsonString -Encoding utf8
++                                ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Set-Content], ParameterBindingException
+    + FullyQualifiedErrorId : NamedParameterNotFound,Microsoft.PowerShell.Commands.SetContentCommand
+Set-Content : No se encuentra ningún parámetro que coincida con el nombre del parámetro 'Value$jsonString'.
+En línea: 58 Carácter: 32
++ Set-Content -Path $pkgJsonPath -Value$jsonString -Encoding utf8
++                                ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Set-Content], ParameterBindingException
+    + FullyQualifiedErrorId : NamedParameterNotFound,Microsoft.PowerShell.Commands.SetContentCommand
+
+   [OK] package.json actualizado con el script 'dev'.
+
+=======================================================
+ FINALIZANDO TRANSCRIPT DEV-004 Fase 1...
+=======================================================
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20261016171832
+**********************

@@ -1,0 +1,40 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20261016171421
+Nombre de usuario: TIERRAYARMONIA\jorge.alvarez
+Usuario RunAs: TIERRAYARMONIA\jorge.alvarez
+Nombre de la configuración: 
+Máquina: TYA-PF1P0818 (Microsoft Windows NT 10.0.19045.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Id. de proceso: 10248
+PSVersion: 5.1.19041.6456
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6456
+BuildVersion: 10.0.19041.6456
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\jorge.alvarez\Documents\ATHENA_NBA_1.0\logs\Sprint_DEV-003_Fase2.txt
+=======================================================
+ INICIANDO SPRINT: DEV-003 Fase 2 (Corrección y Layout)
+=======================================================
+
+1. Reconstruyendo directorios...
+   [OK] Carpeta creada: src\components
+   [OK] Carpeta creada: src\pages
+   [OK] Carpeta creada: src\layouts
+
+2. Generando componentes React...
+   [OK] Navbar.tsx creado.
+   [OK] MainLayout.tsx creado.
+   [OK] Dashboard.tsx creado.
+
+=======================================================
+ FINALIZANDO TRANSCRIPT. LEVANTANDO SERVIDOR...
+=======================================================
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20261016171421
+**********************
