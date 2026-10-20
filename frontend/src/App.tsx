@@ -13,7 +13,7 @@ function App() {
   const [filterWl, setFilterWl] = useState('ALL');
   const [filterTeam, setFilterTeam] = useState('ALL');
 
-  // Cada vez que un filtro cambie, este useEffect volverá a llamar al backend
+  // Cada vez que un filtro cambie, este useEffect volverÃ¡ a llamar al backend
   useEffect(() => {
     setLoading(true);
     axios.get('/api/games', {
@@ -50,7 +50,7 @@ function App() {
         <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="flex items-center text-gray-500 font-bold">
             <Filter size={20} className="mr-2" />
-            <span>Filtros Dinámicos:</span>
+            <span>Filtros DinÃ¡micos:</span>
           </div>
           <div className="flex space-x-4">
             <select 
@@ -82,7 +82,7 @@ function App() {
         </div>
 
         {loading ? (
-          <div className="flex justify-center items-center h-64"><p className="text-lg text-gray-500 animate-pulse font-bold">Actualizando telemetría...</p></div>
+          <div className="flex justify-center items-center h-64"><p className="text-lg text-gray-500 animate-pulse font-bold">Actualizando telemetrÃ­a...</p></div>
         ) : games.length === 0 ? (
            <div className="bg-white p-10 rounded-2xl text-center shadow-sm border border-gray-100 text-gray-500 font-bold">No se encontraron partidos con estos filtros.</div>
         ) : (
@@ -98,7 +98,7 @@ function App() {
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex items-center space-x-4">
                 <div className="bg-orange-100 p-3 rounded-xl text-orange-600"><Trophy size={24} /></div>
-                <div><p className="text-sm font-bold text-gray-400 uppercase tracking-wider">Puntuación Máxima</p><p className="text-3xl font-black text-gray-800">{metrics.maxPts}</p></div>
+                <div><p className="text-sm font-bold text-gray-400 uppercase tracking-wider">PuntuaciÃ³n MÃ¡xima</p><p className="text-3xl font-black text-gray-800">{metrics.maxPts}</p></div>
               </div>
             </div>
 
