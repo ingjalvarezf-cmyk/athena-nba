@@ -6,17 +6,13 @@ const app = express();
 app.use(cors({ origin: '*' }));
 app.use(express.json());
 
-// Conectarse a MongoDB usando tu llave secreta de Render
 const MONGO_URI = process.env.MONGO_URI;
 if (MONGO_URI) {
   mongoose.connect(MONGO_URI)
-    .then(() => console.log("¡Conectado a la Base de Datos MongoDB!"))
+    .then(() => console.log("¡Conectado a MongoDB Atlas!"))
     .catch(err => console.error("Error conectando a MongoDB:", err));
-} else {
-  console.log("Advertencia: No se detectó MONGO_URI. Configúralo en Render.");
 }
 
-// 1. Definimos la estructura de la tabla de la base de datos
 const gameSchema = new mongoose.Schema({
   game_id: String,
   team_id: String,
@@ -26,42 +22,48 @@ const gameSchema = new mongoose.Schema({
   pts: Number
 });
 
-// Este modelo nos permitirá buscar, agregar o borrar partidos reales
 const Game = mongoose.model("Game", gameSchema);
 
-// 2. La ruta que consulta Vercel: ahora lee datos reales desde la nube
+// Endpoint de consulta con filtrado por resultado y búsqueda de equipo
 app.get("/api/games", async (req, res) => {
   try {
     const { wl, team } = req.query;
     let filter = {};
     if (wl && wl !== 'ALL') filter.wl = wl;
-    
-    // Traemos los partidos desde la base de datos
-    const games = await Game.find(filter);
-    
+    if (team && team !== 'ALL') {
+      filter.matchup = { $regex: team,$options: 'i' };
+    }
+    const games = await Game.find(filter).sort({ game_date: -1 });
     res.json({ success: true, total: games.length, data: games });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
 });
 
-// 3. Ruta secreta para "sembrar" los datos la primera vez
+// Endpoint para inyectar partidos reales
 app.get("/api/seed", async (req, res) => {
   try {
-    // Limpia la BD y mete los partidos iniciales
     await Game.deleteMany({});
-    const nbaGames = [
-      { game_id: "0022300004", team_id: "1610612759", game_date: "25 oct 2023", matchup: "SAS vs. DAL", wl: "L", pts: 119 },
-      { game_id: "0022300003", team_id: "1610612738", game_date: "25 oct 2023", matchup: "BOS @ NYK", wl: "W", pts: 108 },
-      { game_id: "0022300003", team_id: "1610612752", game_date: "25 oct 2023", matchup: "NYK vs. BOS", wl: "L", pts: 104 },
-      { game_id: "0022300004", team_id: "1610612742", game_date: "25 oct 2023", matchup: "DAL @ SAS", wl: "W", pts: 126 },
-      { game_id: "0022300001", team_id: "1610612747", game_date: "24 oct 2023", matchup: "LAL @ DEN", wl: "L", pts: 107 },
-      { game_id: "0022300001", team_id: "1610612743", game_date: "24 oct 2023", matchup: "DEN vs. LAL", wl: "W", pts: 119 },
-      { game_id: "0022300002", team_id: "1610612756", game_date: "24 oct 2023", matchup: "PHX @ GSW", wl: "W", pts: 108 },
-      { game_id: "0022300002", team_id: "1610612744", game_date: "24 oct 2023", matchup: "GSW vs. PHX", wl: "L", pts: 104 }
+    const realNbaGames = [
+      { game_id: "0022301201", team_id: "1610612738", game_date: "2024-04-14", matchup: "BOS vs. WAS", wl: "W", pts: 132 },
+      { game_id: "0022301201", team_id: "1610612764", game_date: "2024-04-14", matchup: "WAS @ BOS", wl: "L", pts: 122 },
+      { game_id: "0022301202", team_id: "1610612760", game_date: "2024-04-14", matchup: "OKC vs. DAL", wl: "W", pts: 135 },
+      { game_id: "0022301202", team_id: "1610612742", game_date: "2024-04-14", matchup: "DAL @ OKC", wl: "L", pts: 86 },
+      { game_id: "0022301203", team_id: "1610612747", game_date: "2024-04-14", matchup: "LAL @ NOP", wl: "W", pts: 124 },
+      { game_id: "0022301203", team_id: "1610612740", game_date: "2024-04-14", matchup: "NOP vs. LAL", wl: "L", pts: 108 },
+      { game_id: "0022301204", team_id: "1610612744", game_date: "2024-04-14", matchup: "GSW vs. UTA", wl: "W", pts: 123 },
+      { game_id: "0022301204", team_id: "1610612762", game_date: "2024-04-14", matchup: "UTA @ GSW", wl: "L", pts: 116 },
+      { game_id: "0022301205", team_id: "1610612743", game_date: "2024-04-14", matchup: "DEN vs. MEM", wl: "W", pts: 126 },
+      { game_id: "0022301205", team_id: "1610612763", game_date: "2024-04-14", matchup: "MEM @ DEN", wl: "L", pts: 111 },
+      { game_id: "0022301206", team_id: "1610612752", game_date: "2024-04-14", matchup: "NYK vs. CHI", wl: "W", pts: 120 },
+      { game_id: "0022301206", team_id: "1610612741", game_date: "2024-04-14", matchup: "CHI @ NYK", wl: "L", pts: 119 },
+      { game_id: "0022301207", team_id: "1610612749", game_date: "2024-04-14", matchup: "MIL @ ORL", wl: "L", pts: 88 },
+      { game_id: "0022301207", team_id: "1610612753", game_date: "2024-04-14", matchup: "ORL vs. MIL", wl: "W", pts: 113 },
+      { game_id: "0022301208", team_id: "1610612756", game_date: "2024-04-14", matchup: "PHX @ MIN", wl: "W", pts: 125 },
+      { game_id: "0022301208", team_id: "1610612750", game_date: "2024-04-14", matchup: "MIN vs. PHX", wl: "L", pts: 106 }
     ];
-    await Game.insertMany(nbaGames);
-    res.json({ success: true, message: "¡Base de datos sembrada con éxito!" });
+    await Game.insertMany(realNbaGames);
+    res.json({ success: true, count: realNbaGames.length, message: "¡Base de datos cargada con partidos reales de la NBA!" });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
